@@ -1,3 +1,4 @@
 pip~=26.3
 openpyxl~=3.1.5
 et_xmlfile~=2.0.0
+pytest~=8.3.4
