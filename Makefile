@@ -1,4 +1,4 @@
-.PHONY: help setup lint format test clean
+.PHONY: help setup lint format test run clean
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "%-10s %s\n", $$1, $$2}'
@@ -16,6 +16,9 @@ format: ## Format with ruff
 
 test: ## Run pytest
 	pytest || [ $$? -eq 5 ]
+
+run: ## Run the target configured in run.py
+	python run.py
 
 clean: ## Remove caches
 	rm -rf .ruff_cache .mypy_cache .pytest_cache
