@@ -2,7 +2,9 @@
 
 ## Features
 
-## pyenv - install python locally
+_(TODO: list the features here.)_
+
+## Install Python Locally with `pyenv`
 
 ```bash
 curl https://pyenv.run | bash
@@ -10,56 +12,62 @@ curl https://pyenv.run | bash
 
 ## Setup
 
-In case `virtualenv` is not installed
+### 1. Install `virtualenv` (if not already available)
 
-```bash 
-pip install virtualenv 
+```bash
+pip install virtualenv
 ```
 
-*or*
+_Or, if your system Python is externally managed (e.g. on Debian/Ubuntu):_
 
 ```bash
 pip install virtualenv --break-system-packages
 ```
 
-Inside of the project
+### 2. Create a virtual environment inside the project
 
 ```bash
-virtualenv .venv 
+virtualenv .venv
 ```
 
-1. **Activate your virtual environment** (you should have done this already):
+### 3. Activate the virtual environment
 
-   ```bash
-   source .venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+```bash
+source .venv/bin/activate    # On Windows: .venv\Scripts\activate
+```
 
-2. **Install dependencies**:
+### 4. Install dependencies
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-### Remove the broken virtual environment
+## Recovering From a Broken Virtual Environment
 
-```bash 
-   rm -rf .venv
-   ```
+If your virtual environment is corrupted, delete and recreate it.
 
-### Create a fresh virtual environment
+### 1. Remove the broken virtual environment
+
+```bash
+rm -rf .venv
+```
+
+### 2. Create a fresh virtual environment
 
 ```bash
 python3 -m venv .venv
 ```
 
-### Activate it
-
+### 3. Activate it
+can 
 ```bash
 source .venv/bin/activate
 ```
 
-### Upgrade pip and reinstall your dependencies (if you have a requirements.txt)
+### 4. Upgrade `pip` and reinstall dependencies
 
-```bash 
-pip install --upgrade pip if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+```bash
+pip install --upgrade pip
+if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 ```
+
