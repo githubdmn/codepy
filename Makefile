@@ -3,6 +3,9 @@
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "%-10s %s\n", $$1, $$2}'
 
+activate:
+	. .venv/bin/activate
+
 setup: ## Create venv and install deps
 	python -m venv .venv
 	. .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt -r requirements-dev.txt
