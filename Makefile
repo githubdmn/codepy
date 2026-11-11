@@ -1,4 +1,4 @@
-.PHONY: help setup lint format test run clean
+.PHONY: help setup activate lint format test run clean
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "%-10s %s\n", $$1, $$2}'
