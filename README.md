@@ -1,73 +1,95 @@
-# AI Chat API
+# codepy
 
-## Features
+A personal laboratory for learning, experimenting, and shipping small things
+in Python — data structures, algorithms, scripts, web services, databases,
+and networking. Treat it as a living notebook: some code is polished, some
+is a sketch, and all of it is mine to learn from.
 
-_(TODO: list the features here.)_
-
-## Install Python Locally with `pyenv`
-
-```bash
-curl https://pyenv.run | bash
-```
-
-## Setup
-
-### 1. Install `virtualenv` (if not already available)
+## Quick start
 
 ```bash
-pip install virtualenv
+git clone https://github.com/<you>/codepy.git
+cd codepy
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt -r requirements-dev.txt
+make test      # run the fast suite
+make lint      # format + lint
 ```
 
-_Or, if your system Python is externally managed (e.g. on Debian/Ubuntu):_
+## What this is not
 
-```bash
-pip install virtualenv --break-system-packages
-```
+This is not a library, not a monorepo, and not production code. It is a personal lab. Do not over-engineer it.
 
-### 2. Create a virtual environment inside the project
+## Repository layout
 
-```bash
-virtualenv .venv
-```
+| Folder | Purpose | Status |
+| --- | --- | --- |
+| `01-foundations/` | DS&A, patterns, language idioms | 🟢 active |
+| `02-scripts/` | Small utilities, automation, CLI tools | 🟢 active |
+| `03-web/` | FastAPI/Flask apps, async servers | 🟡 intermittent |
+| `04-databases/` | SQL, NoSQL, ORMs, migrations | 🟡 intermittent |
+| `05-networking/` | Sockets, HTTP, protocols | 🟡 intermittent |
+| `06-experiments/` | Dated spikes and proofs of concept | ⚪ on demand |
+| `07-playground/` | Scratchpad, no guarantees | ⚪ on demand |
+| `docs/` | Notes, cheatsheets, decisions | 🟢 active |
+| `templates/` | Starter scaffolding for new subprojects | ⚪ |
+| `archive/` | Retired code kept for reference | ⚪ |
 
-### 3. Activate the virtual environment
+## Sections
 
-```bash
-source .venv/bin/activate    # On Windows: .venv\Scripts\activate
-```
+### 01 – Foundations
 
-### 4. Install dependencies
+- `data-structures/` – hand-rolled implementations with complexity notes
+- `algorithms/` – classic algorithms + tests
+- `patterns/` – design patterns with minimal examples
+- `python-idioms/` – "the Pythonic way" snippets
 
-```bash
-pip install -r requirements.txt
-```
+### 02 – Scripts
 
-## Recovering From a Broken Virtual Environment
+Standalone utilities. Each has a short docstring and, where practical, a test.
 
-If your virtual environment is corrupted, delete and recreate it.
+### 03 – Web
 
-### 1. Remove the broken virtual environment
+Small services and apps. Each subproject has its own `README.md` and
+`pyproject.toml`; the top-level Makefile exposes a `run-<name>` target.
 
-```bash
-rm -rf .venv
-```
+### 04 – Databases
 
-### 2. Create a fresh virtual environment
+Schema experiments, query notebooks, ORM comparisons, migration demos.
 
-```bash
-python3 -m venv .venv
-```
+### 05 – Networking
 
-### 3. Activate it
-can 
-```bash
-source .venv/bin/activate
-```
+Raw sockets, HTTP clients/servers, protocol explorations.
 
-### 4. Upgrade `pip` and reinstall dependencies
+### 06 – Experiments
 
-```bash
-pip install --upgrade pip
-if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-```
+Dated folders: `YYYY-MM-DD-short-topic/`. Each has a one-line `NOTES.md`
+explaining the question and the conclusion.
 
+### 07 – Playground
+
+Anything goes. Not linted, not tested, not guaranteed to run.
+
+## Conventions
+
+- Each subproject is self-contained and has a `README.md` with:
+  purpose, how to run, what was learned.
+- Python code targets 3.11+; formatting via `ruff format`, linting via `ruff`.
+- Tests use `pytest`; place them next to the code as `test_*.py`.
+- Commits follow Conventional Commits (`feat:`, `fix:`, `exp:`, `docs:`).
+- Experiments get a date prefix so I can see when I was exploring what.
+- Anything I haven't touched in ~12 months goes to `archive/`.
+
+## Writing it down
+
+Every experiment ends with a short note in `docs/notes/`:
+what I tried, what worked, what I'd do differently. The code alone is
+forgetting; the note is remembering.
+
+## Secrets
+
+Never commit secrets. Copy `.env.example` to `.env` for local experiments; `.env` is gitignored.
+
+## License
+
+MIT (unless a subproject states otherwise).

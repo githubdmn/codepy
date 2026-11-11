@@ -1,0 +1,20 @@
+[project]
+name = "codepy"
+version = "0.0.0"
+description = "Personal Python playground"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["07-playground", "archive", "06-experiments"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["01-foundations", "02-scripts", "03-web", "04-databases", "05-networking"]
+python_files = ["test_*.py"]
+
+[tool.mypy]
+python_version = "3.11"
+exclude = ["07-playground", "archive", "06-experiments", "\\.venv"]
