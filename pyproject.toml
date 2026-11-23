@@ -4,17 +4,34 @@ version = "0.0.0"
 description = "Personal Python playground"
 requires-python = ">=3.11"
 
+dependencies = [
+  "fastapi[standard]",
+  "uvicorn[standard]",
+  "httpx",
+  "pydantic",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy", "pre-commit"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["01-foundations", "02-scripts", "03-web", "04-databases", "05-networking"]
+
+[tool.pytest.ini_options]
+testpaths = ["01-foundations", "02-scripts", "03-web", "04-databases", "05-networking"]
+
 [tool.ruff]
 line-length = 100
-extend-exclude = ["07-playground", "archive", "06-experiments"]
+src = ["01-foundations", "02-scripts", "03-web", "04-databases", "05-networking"]
+extend-exclude = [".venv", "07-playground", "archive", "06-experiments"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
 
-[tool.pytest.ini_options]
-testpaths = ["01-foundations", "02-scripts", "03-web", "04-databases", "05-networking"]
-python_files = ["test_*.py"]
-
 [tool.mypy]
 python_version = "3.11"
-exclude = ["07-playground", "archive", "06-experiments", "\\.venv"]
+exclude = '(^|/)(07-playground|archive|06-experiments|\.venv)/'

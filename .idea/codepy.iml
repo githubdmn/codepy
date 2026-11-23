@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/03-web/fastapi/fastapi-fundamentals/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.aider.tags.cache.v4" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
